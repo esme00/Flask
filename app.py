@@ -46,8 +46,36 @@ def agregar_dato():
 
         db.session.add(nuevo_dato)
         db.session.commit()
+        return redirect(url_for('index'))
+    
+@app.route('/editar_dato/<int:id_dato>', methods=['GET', 'POST'])
+def editar_dato(id_dato):
+    datos = Dato.query.get_or_404(id_dato)
+    
+    if request.method == 'POST':
+        # Obtener los datos del formulario de edición
+        name_user = request.form['name_user']
+        password = request.form['password']
+        genero = request.form['genero']
+        direction = request.form['direction']
+        pasatiempo = request.form.getlist('pasatiempo')  # Si usas checkbox, recoge todos los valores seleccionados
+        id_cursos = request.form['id_cursos']
+        conocimientos = request.form['conocimientos']
 
-        return jsonify({'mensaje': 'Dato agregado correctamente'}), 201
+        # Actualizar los datos en la base de datos
+        datos.name_user = name_user
+        datos.password = password
+        datos.genero = genero
+        datos.direction = direction
+        datos.pasatiempo = ', '.join(pasatiempo)  # Convertir la lista de pasatiempos en una cadena separada por comas
+        datos.id_cursos = id_cursos
+        datos.conocimientos = conocimientos
+
+        db.session.commit()
+        return redirect(url_for('index'))
+
+    # Si la solicitud es GET, renderizar la plantilla de edición
+    return render_template('editar_dato.html', dato=datos)    
 
 @app.route('/eliminar_dato', methods=['POST'])
 def eliminar_dato():
