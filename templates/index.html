@@ -16,8 +16,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#" style="color: white;">Inicio</a>
-                        <a class="nav-link" href="#seccion_tabla" style="color: white;">Datos</a>                      
+  
+                        <a class="nav-link active" aria-current="page" href="#" style="color: white;">Formulario</a>
+                        <a class="nav-link" href="#seccion_tabla" style="color: white;">Datos</a>
                     </div>
                 </div>
             </div>
@@ -95,12 +96,13 @@
         <!--FIN DE FORMULARIO--> 
 
         <!--TABLA-->
-        <div class="table-container" style="margin-top: 25px;">
-            <table class="table" id="seccion_tabla">
+        <div class="table-container" style="margin-top: 40px;">
+            <table class="table table-hover" id="seccion_tabla">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Dirección</th>
                         <th scope="col">Género</th>
                         <th scope="col">Pasatiempo</th>
                         <th scope="col">Conocimiento</th>
@@ -114,6 +116,7 @@
                         <!--RECUPERA LAS COLUMNAS-->
                         <th scope="row">{{ Dato.id_dato }}</th>
                         <td>{{ Dato.name_user }}</td>
+                        <td>{{Dato.direction}}</td>
                         <td>{{ Dato.genero }}</td>
                         <td>{{ Dato.pasatiempo }}</td>
                         <td>{{ Dato.conocimientos }}</td>
@@ -146,12 +149,12 @@
             <div style="max-width: 1200px; margin: 0 auto;">
                 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
                     <div style="width: 30%; margin-bottom: 20px;">
-                        <h3>Enlaces Útiles</h3>
+                        <h3>Integrantes </h3>
                         <ul style="list-style-type: none; padding: 0;">
-                            <li><a href="#" style="color: white; text-decoration: none;">Inicio</a></li>
-                            <li><a href="#" style="color: white; text-decoration: none;">Acerca de Nosotros</a></li>
-                            <li><a href="#" style="color: white; text-decoration: none;">Servicios</a></li>
-                            <li><a href="#" style="color: white; text-decoration: none;">Contacto</a></li>
+                            <li><a href="#" style="color: white; text-decoration: none;">Esmeralda García</a></li>
+                            <li><a href="#" style="color: white; text-decoration: none;">Roxana Valencia</a></li>
+                            <li><a href="#" style="color: white; text-decoration: none;">Oscar García</a></li>
+                            <li><a href="#" style="color: white; text-decoration: none;">Diego Burgos</a></li>
                         </ul>
                     </div>
                     <div style="width: 30%; margin-bottom: 20px;">
@@ -167,7 +170,7 @@
                         <h3>Contacto</h3>
                         <p>Dirección: 123 Calle Principal, Santa Ana, El Salvador</p>
                         <p>Teléfono: +503 0000-0000</p>
-                        <p>Email: UNICAES@gmai.com</p>
+                        <p>Email: UNICAES@gmail.com</p>
                     </div>
                 </div>
             </div>

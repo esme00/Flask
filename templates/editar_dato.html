@@ -16,8 +16,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#" style="color: white;">Inicio</a>
-                    <a class="nav-link" href="#seccion_tabla" style="color: white;">Datos</a>
+                    <a class="nav-link active" aria-current="page" href="#" style="color: white;">Formulario</a>
+                    <a class="nav-link" href="#seccion_tabla" style="color: white;">Datos</a>s
                 </div>
             </div>
         </div>
@@ -25,36 +25,42 @@
     <!--FIN NAV-->
     <!--EDICION DE DATOS-->
     <div class="container mt-4">
-        <h1><center>Editar Dato</center></h1>
+        <h1><center>Edición de Datos</center></h1>
 
         <form action="/editar_dato/{{ dato.id_dato }}" method="post" style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; margin-top: 45px;">
-            <h1 style="text-align: center;">Editar Dato</h1>
+            <h1 style="text-align: center;">Formulario de Actualización</h1>
 
-            <div class="mb-3">
+            <!--NOMBRE-->
+            <div class="mb-3" style="margin-top: 20px;">
                 <label for="name_user" class="form-label">Nombre de usuario:</label>
                 <input type="text" id="name_user" name="name_user" value="{{ dato.name_user }}" class="form-control" required>
             </div>
+            <!--FIN NOMBRE-->
 
+            <!--CONTRASENIA-->
             <div class="mb-3">
                 <label for="password" class="form-label">Contrasena:</label>
                 <input type="password" id="password" name="password" value="{{ dato.password }}" class="form-control" required>
             </div>
+            <!--FIN CONTRASENIA-->
 
             <!--RECUPERACION DE GENERO Y CAMBIOS-->
             <div class="mb-3">
                 <label style="font-weight: bold;">Género:</label><br>
                 <select name="genero" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
-                    <option value="masculino" {% if dato.genero= ='masculino' %} selected {% endif %}>Masculino</option>
-                    <option value="femenino" {% if dato.genero= ='femenino' %} selected {% endif %}>Femenino</option>
-                    <option value="otro" {% if dato.genero= ='otro' %} selected {% endif %}>Otro</option>
+                    <option value="masculino" {% if dato.genero =='masculino' %} selected {% endif %}>Masculino</option>
+                    <option value="femenino" {% if dato.genero =='femenino' %} selected {% endif %}>Femenino</option>
+                    <option value="otro" {% if dato.genero =='otro' %} selected {% endif %}>Otro</option>
                 </select><br>
             </div>
             <!--FIN GENERO-->
 
+            <!--DIRECCION-->
             <div class="mb-3">
                 <label for="direction">Dirección:</label><br>
                 <input type="text" id="direction" name="direction" value="{{ dato.direction }}" required><br>
             </div>
+            <!--FIN DIRECCION-->
 
             <!--RECUPERACION DE PASATIEMPO-->
             <div class="row mt-3">
@@ -74,37 +80,41 @@
                     <label for="cursos">Cursos:</label>
                     <select name="cursos" id="cursos">
                         <option value="">---Seleccione Curso---</option>
-                        <option value="POO" {% if dato.curso= ='POO' %} selected {% endif %}>POO</option>
-                        <option value="Cocina" {% if dato.cursos= ='Cocina' %} selected {% endif %}>Cocina</option>
-                        <option value="Cosmetologa" {% if dato.cursos= ='Cosmetologa' %} selected {% endif %}>Cosmetologa</option>
-                        <option value="Informatica" {% if dato.cursos= ='Informatica' %} selected {% endif %}>Informatica</option>
-                        <option value="Ingles" {% if dato.cursos= ='Ingles' %} selected {% endif %}>Ingles</option>
+                        <option value="POO" {% if dato.curso =='POO' %} selected {% endif %}>POO</option>
+                        <option value="Cocina" {% if dato.cursos =='Cocina' %} selected {% endif %}>Cocina</option>
+                        <option value="Cosmetologa" {% if dato.cursos =='Cosmetologa' %} selected {% endif %}>Cosmetologa</option>
+                        <option value="Informatica" {% if dato.cursos =='Informatica' %} selected {% endif %}>Informatica</option>
+                        <option value="Ingles" {% if dato.cursos =='Ingles' %} selected {% endif %}>Ingles</option>
                     </select>
                 </div>
             </div>
             <!--FIN CURSOS-->
 
+            <!--CONOCIMIENTOS-->
             <div class="mb-3">
                 <label for="conocimientos" class="form-label">Conocimientos:</label>
                 <input type="text" id="conocimientos" name="conocimientos" value="{{ dato.conocimientos }}" class="form-control" required>
             </div>
+            <!--FIN CONOCMIENTOS-->
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Guardar cambios</button>
+            <!--BOTON DE ACTUALIZADO-->
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Guardar Cambios</button>
+            <!--FIN DE BOTON ACTUALIZADO-->
         </form>
     </div>
     <!--FIN EDITAR DATO-->
 
     <!--FOOTER-->
-    <footer style="background-color: #333; color: white; padding: 20px;">
+    <footer style="background-color: #333; color: white; padding: 20px; margin-top: 40px;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
                 <div style="width: 30%; margin-bottom: 20px;">
-                    <h3>Enlaces Útiles</h3>
+                    <h3>Integrantes </h3>
                     <ul style="list-style-type: none; padding: 0;">
-                        <li><a href="#" style="color: white; text-decoration: none;">Inicio</a></li>
-                        <li><a href="#" style="color: white; text-decoration: none;">Acerca de Nosotros</a></li>
-                        <li><a href="#" style="color: white; text-decoration: none;">Servicios</a></li>
-                        <li><a href="#" style="color: white; text-decoration: none;">Contacto</a></li>
+                        <li><a href="#" style="color: white; text-decoration: none;">Esmeralda García</a></li>
+                        <li><a href="#" style="color: white; text-decoration: none;">Roxana Valencia</a></li>
+                        <li><a href="#" style="color: white; text-decoration: none;">Oscar García</a></li>
+                        <li><a href="#" style="color: white; text-decoration: none;">Diego Burgos</a></li>
                     </ul>
                 </div>
                 <div style="width: 30%; margin-bottom: 20px;">
@@ -120,7 +130,7 @@
                     <h3>Contacto</h3>
                     <p>Dirección: 123 Calle Principal, Santa Ana, El Salvador</p>
                     <p>Teléfono: +503 0000-0000</p>
-                    <p>Email: UNICAES@gmai.com</p>
+                    <p>Email: UNICAES@gmail.com</p>
                 </div>
             </div>
         </div>

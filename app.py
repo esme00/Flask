@@ -44,7 +44,7 @@ def agregar_dato():
         cursos = datos.get('id_cursos')
         conocimientos = datos.get('conocimientos')
 
-        nuevo_dato = Dato(name_user=name_user, password=password, genero=genero, direction=direction, pasatiempo=pasatiempo, id_cursos=id_cursos, conocimientos=conocimientos)
+        nuevo_dato = Dato(name_user=name_user, password=password, genero=genero, direction=direction, pasatiempo=pasatiempo, cursos=cursos, conocimientos=conocimientos)
 
         db.session.add(nuevo_dato)
         db.session.commit()
@@ -97,6 +97,7 @@ def eliminar_dato():
 def index():
     tabla = Dato.query.all()
     return render_template('index.html', tabla=tabla)
+
 
 # Verificar si se ejecuta directamente este script
 if __name__ == '__main__':
