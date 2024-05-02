@@ -57,32 +57,23 @@ def editar_dato(id_dato):
         name_user = request.form['name_user']
         password = request.form['password']
         genero = request.form['genero']
-        
-        # Verificar si el campo "direction" está presente en el formulario
-        if 'direction' in request.form:
-            direction = request.form['direction']
-        else:
-            direction = datos.direction  # Utilizar el valor existente si no se proporciona uno nuevo en el formulario
-
-        pasatiempo = request.form.getlist('pasatiempo')  
+        direction = request.form['direction']
+        pasatiempo = request.form.getlist('pasatiempo')  # Lista de pasatiempos seleccionados
         cursos = request.form['cursos']
-        conocimientos = request.form['conocimientos']
 
         # Actualizar los datos en la base de datos
         datos.name_user = name_user
         datos.password = password
         datos.genero = genero
         datos.direction = direction
-        datos.pasatiempo = ', '.join(pasatiempo)  
+        datos.pasatiempo = ', '.join(pasatiempo)  # Convertir la lista de pasatiempos en una cadena separada por comas
         datos.cursos = cursos
-        datos.conocimientos = conocimientos
 
         db.session.commit()
         return redirect(url_for('index'))
 
     # Si la solicitud es GET, renderizar la plantilla de edición
     return render_template('editar_dato.html', dato=datos)
-
 @app.route('/eliminar_dato', methods=['POST'])
 def eliminar_dato():
     if request.method == 'POST':

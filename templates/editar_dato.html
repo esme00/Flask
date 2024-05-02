@@ -29,13 +29,18 @@
             </div>
 
             <div class="mb-3">
-                <label for="direccion" class="form-label">Direccion:</label>
-                <input type="text" id="direction" name="direccion" value="{{ dato.direccion }}" class="form-control" required>
+                <label for="direction">Dirección:</label><br>
+                <input type="text" id="direction" name="direction" value="{{ dato.direction }}" required><br>
             </div>
 
             <div class="mb-3">
-                <label for="pasatiempo" class="form-label">Pasatiempo:</label>
-                <input type="text" id="pasatiempo" name="pasatiempo" value="{{ dato.pasatiempo }}" class="form-control" required>
+                <label style="font-weight: bold;">Pasatiempo:</label><br>
+                <div class="col-sm-4">
+                    <label><input type="checkbox" name="pasatiempo" value="Bailar" {{ 'checked' if 'Bailar' in dato.pasatiempo else '' }}> Bailar</label>
+                    <label><input type="checkbox" name="pasatiempo" value="Correr" {{ 'checked' if 'Correr' in dato.pasatiempo else '' }}> Correr</label>
+                    <label><input type="checkbox" name="pasatiempo" value="Escalar" {{ 'checked' if 'Escalar' in dato.pasatiempo else '' }}> Escalar</label>
+                    <label><input type="checkbox" name="pasatiempo" value="Peliculas" {{ 'checked' if 'Peliculas' in dato.pasatiempo else '' }}> Películas</label>
+                </div>
             </div>
 
             <div class="mb-3">
