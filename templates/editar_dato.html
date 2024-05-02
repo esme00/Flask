@@ -36,16 +36,26 @@
             <div class="mb-3">
                 <label style="font-weight: bold;">Pasatiempo:</label><br>
                 <div class="col-sm-4">
-                    <label><input type="checkbox" name="pasatiempo" value="Bailar" {{ 'checked' if 'Bailar' in dato.pasatiempo else '' }}> Bailar</label>
-                    <label><input type="checkbox" name="pasatiempo" value="Correr" {{ 'checked' if 'Correr' in dato.pasatiempo else '' }}> Correr</label>
+                    <label><input type="checkbox" name="pasatiempo" value="Cantar" {{ 'checked' if 'Cantar' in dato.pasatiempo else '' }}> Cantar</label>
+                    <label><input type="checkbox" name="pasatiempo" value="Gym" {{ 'checked' if 'Correr' in dato.pasatiempo else '' }}> Gym</label>
                     <label><input type="checkbox" name="pasatiempo" value="Escalar" {{ 'checked' if 'Escalar' in dato.pasatiempo else '' }}> Escalar</label>
                     <label><input type="checkbox" name="pasatiempo" value="Peliculas" {{ 'checked' if 'Peliculas' in dato.pasatiempo else '' }}> Películas</label>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label for="cursos" class="form-label">Cursos:</label>
-                <input type="text" id="cursos" name="cursos" value="{{ dato.cursos }}" class="form-control" required>
+                <div class="col-sm-4">
+                    <label for="cursos">Cursos:</label>
+                    <select name="cursos" id="cursos">
+                        <option value="">---Seleccione Curso---</option>
+                        <option value="POO" {% if dato.curso =='POO' %} selected {% endif %}>POO</option>
+                        <option value="Cocina" {% if dato.cursos =='Cocina' %} selected {% endif %}>Cocina</option>
+                        <option value="Cosmetologa" {% if dato.cursos =='Cosmetologa' %} selected {% endif %}>Cosmetologa</option>
+                        <option value="Informatica" {% if dato.cursos =='Informatica' %} selected {% endif %}>Informatica</option>
+                        <option value="Ingles" {% if dato.cursos =='Ingles' %} selected {% endif %}>Ingles</option>
+                    </select>
+                </div>
+
             </div>
 
             <div class="mb-3">
