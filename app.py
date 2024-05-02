@@ -41,7 +41,7 @@ def agregar_dato():
         genero = datos.get('genero')
         direction = datos.get('direction')
         pasatiempo = datos.get('pasatiempo')
-        cursos = datos.get('id_cursos')
+        cursos = datos.get('cursos')
         conocimientos = datos.get('conocimientos')
 
         nuevo_dato = Dato(name_user=name_user, password=password, genero=genero, direction=direction, pasatiempo=pasatiempo, cursos=cursos, conocimientos=conocimientos)
