@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,  request, jsonify
 from flask_sqlalchemy import SQLAlchemy   # type: ignore
 
 # Configurar la aplicación Flask
@@ -15,7 +15,7 @@ db.init_app(app)
 
 # # # Definir un modelo de tabla para los datos
 # # # Definir un modelo de tabla para los datos
-class dato(db.Model):
+class Dato(db.Model):
     __tablename__ = 'dato'
     id_dato = db.Column(db.Integer, primary_key=True)
     name_user = db.Column(db.String(255), nullable=False)
@@ -47,16 +47,9 @@ def agregar_dato():
 
     
 
-# def __repr__(self):
-#     return '<dato %r>' % self.name_user
-    
-# def create_db():
-#     db.create_all()
-#     return 'Database created successfully'
-# */
 @app.route('/')
 def index():
-    tabla = dato.query.all()
+    tabla = Dato.query.all()
     return render_template('index.html', tabla=tabla)
 
 # Verificar si se ejecuta directamente este script
