@@ -29,7 +29,11 @@ class Dato(db.Model):
 @app.route('/agregar_dato', methods=['POST'])
 def agregar_dato():
     if request.method == 'POST':
-        datos = request.json
+        if request.is_json:
+            datos = request.json
+        else:
+            datos = request.form
+
         name_user = datos.get('name_user')
         password = datos.get('password')
         genero = datos.get('genero')
