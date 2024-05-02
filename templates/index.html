@@ -43,15 +43,25 @@
                 <input type="text" name="direction" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;"><br>
 
                 <label style="font-weight: bold;">Pasatiempo:</label><br>
-                    <div class="col-sm-4">
-                        <label><input type="checkbox" name="pasatiempo" value="Bailar" /> Bailar</label>
-                        <label><input type="checkbox" name="pasatiempo" value="Correr" /> Correr</label>
-                        <label><input type="checkbox" name="pasatiempo" value="Escalar" /> Escalar</label>
-                        <label><input type="checkbox" name="pasatiempo" value="Peliculas" /> Películas</label>
-                    </div>
+                <div class="col-sm-4">
+                    <label><input type="checkbox" name="pasatiempo" value="Bailar" /> Bailar</label>
+                    <label><input type="checkbox" name="pasatiempo" value="Correr" /> Correr</label>
+                    <label><input type="checkbox" name="pasatiempo" value="Escalar" /> Escalar</label>
+                    <label><input type="checkbox" name="pasatiempo" value="Peliculas" /> Películas</label>
+                </div>
 
-                <label style="font-weight: bold;">ID de Cursos:</label><br>
-                <input type="text" name="id_cursos" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;"><br>
+                <label style="font-weight: bold;">Cursos:</label><br>
+                    <div class="col-sm-4">
+                        <select name="cursos" id="id_dato">
+                            <option value="">---Seleccione Curso---</option>
+                            <option selected="selected">POO</option>
+                            <option>DAW</option>
+                            <option>MICRO</option>
+                            <option>SI</option>
+                            <option>REDES</option>
+
+                        </select>
+                    </div>
 
                 <label style="font-weight: bold;">Conocimientos:</label><br>
                 <input type="text" name="conocimientos" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;"><br>
@@ -71,6 +81,7 @@
                         <th scope="col">Género</th>
                         <th scope="col">Pasatiempo</th>
                         <th scope="col">Conocimiento</th>
+                        <th scope="col">Cursos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,6 +92,7 @@
                         <td>{{ Dato.genero }}</td>
                         <td>{{ Dato.pasatiempo }}</td>
                         <td>{{ Dato.conocimientos }}</td>
+                        <td>{{ Dato.cursos  }}</td>
                         <td>
                             <form action="{{ url_for('editar_dato', id_dato=Dato.id_dato) }}" method="get" style="display: inline;">
                                 <button type="submit" class="btn btn-primary">Editar</button>
@@ -124,9 +136,9 @@
                     </div>
                     <div style="width: 30%; margin-bottom: 20px;">
                         <h3>Contacto</h3>
-                        <p>Dirección: 123 Calle Principal, Ciudad, País</p>
-                        <p>Teléfono: +1234567890</p>
-                        <p>Email: info@example.com</p>
+                        <p>Dirección: 123 Calle Principal, Santa Ana, El Salvador</p>
+                        <p>Teléfono: +503 0000-0000</p>
+                        <p>Email: UNICAES@gmai.com</p>
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@ class Dato(db.Model):
     genero = db.Column(db.String(255),nullable=False)
     direction = db.Column(db.String(255),nullable=False)
     pasatiempo = db.Column(db.String(255),nullable=False)
-    id_cursos = db.Column(db.String(255),nullable=False)
+    cursos = db.Column(db.String(255),nullable=False)
     conocimientos = db.Column(db.String(255),nullable=False)
     
 @app.route('/agregar_dato', methods=['POST'])
@@ -39,7 +39,7 @@ def agregar_dato():
         genero = datos.get('genero')
         direction = datos.get('direction')
         pasatiempo = datos.get('pasatiempo')
-        id_cursos = datos.get('id_cursos')
+        cursos = datos.get('id_cursos')
         conocimientos = datos.get('conocimientos')
 
         nuevo_dato = Dato(name_user=name_user, password=password, genero=genero, direction=direction, pasatiempo=pasatiempo, id_cursos=id_cursos, conocimientos=conocimientos)
@@ -57,9 +57,15 @@ def editar_dato(id_dato):
         name_user = request.form['name_user']
         password = request.form['password']
         genero = request.form['genero']
-        direction = request.form['direction']
-        pasatiempo = request.form.getlist('pasatiempo')  # Si usas checkbox, recoge todos los valores seleccionados
-        id_cursos = request.form['id_cursos']
+        
+        # Verificar si el campo "direction" está presente en el formulario
+        if 'direction' in request.form:
+            direction = request.form['direction']
+        else:
+            direction = datos.direction  # Utilizar el valor existente si no se proporciona uno nuevo en el formulario
+
+        pasatiempo = request.form.getlist('pasatiempo')  
+        cursos = request.form['cursos']
         conocimientos = request.form['conocimientos']
 
         # Actualizar los datos en la base de datos
@@ -67,15 +73,15 @@ def editar_dato(id_dato):
         datos.password = password
         datos.genero = genero
         datos.direction = direction
-        datos.pasatiempo = ', '.join(pasatiempo)  # Convertir la lista de pasatiempos en una cadena separada por comas
-        datos.id_cursos = id_cursos
+        datos.pasatiempo = ', '.join(pasatiempo)  
+        datos.cursos = cursos
         datos.conocimientos = conocimientos
 
         db.session.commit()
         return redirect(url_for('index'))
 
     # Si la solicitud es GET, renderizar la plantilla de edición
-    return render_template('editar_dato.html', dato=datos)    
+    return render_template('editar_dato.html', dato=datos)
 
 @app.route('/eliminar_dato', methods=['POST'])
 def eliminar_dato():
