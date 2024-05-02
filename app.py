@@ -1,20 +1,20 @@
-from flask import Flask, render_template,  request, jsonify, redirect, url_for
+from flask import Flask, render_template,  request, jsonify, redirect, url_for       
 from flask_sqlalchemy import SQLAlchemy   # type: ignore
 
 # Configurar la aplicación Flask
 app = Flask(__name__)
 
-# # # Configurar la conexión a la base de datos SQL Server
-# # # Cambia 'driver', 'server', 'database', 'username' y 'password' por los valores adecuados
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://sa:esmeralda!@ESME/datos?driver=ODBC+Driver+17+for+SQL+Server'
+#Configurar la conexión a la base de datos SQL Server
+#Cambia 'driver', 'server', 'database', 'username' y 'password' por los valores adecuados
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://sa:esmeralda!@ESME/datos?driver=ODBC+Driver+17+for+SQL+Server'  #descargue un ODBC
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# # # # Inicializar la extensión SQLAlchemy con la aplicación Flask
+#Inicializar la extensión SQLAlchemy con la aplicación Flask
 db = SQLAlchemy()
 db.init_app(app)
 
-# # # Definir un modelo de tabla para los datos
-# # # Definir un modelo de tabla para los datos
+
+#Definir un modelo de tabla para los datos
 class Dato(db.Model):
     __tablename__ = 'dato'
     id_dato = db.Column(db.Integer, primary_key=True)
@@ -25,7 +25,9 @@ class Dato(db.Model):
     pasatiempo = db.Column(db.String(255),nullable=False)
     cursos = db.Column(db.String(255),nullable=False)
     conocimientos = db.Column(db.String(255),nullable=False)
+ 
     
+# Redirección de botón de agregado
 @app.route('/agregar_dato', methods=['POST'])
 def agregar_dato():
     if request.method == 'POST':
@@ -48,6 +50,8 @@ def agregar_dato():
         db.session.commit()
         return redirect(url_for('index'))
     
+
+# Redirección de botón de actualizar
 @app.route('/editar_dato/<int:id_dato>', methods=['GET', 'POST'])
 def editar_dato(id_dato):
     datos = Dato.query.get_or_404(id_dato)
@@ -74,6 +78,8 @@ def editar_dato(id_dato):
 
     # Si la solicitud es GET, renderizar la plantilla de edición
     return render_template('editar_dato.html', dato=datos)
+
+# Redirección del botón de eliminar
 @app.route('/eliminar_dato', methods=['POST'])
 def eliminar_dato():
     if request.method == 'POST':
@@ -86,6 +92,7 @@ def eliminar_dato():
         else:
             return jsonify({'mensaje': 'El dato no existe'}), 404  
 
+# El llamado de la tabla
 @app.route('/')
 def index():
     tabla = Dato.query.all()
