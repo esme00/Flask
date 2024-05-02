@@ -1,4 +1,4 @@
-from flask import Flask, render_template,  request, jsonify
+from flask import Flask, render_template,  request, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy   # type: ignore
 
 # Configurar la aplicación Flask
@@ -45,7 +45,17 @@ def agregar_dato():
 
         return jsonify({'mensaje': 'Dato agregado correctamente'}), 201
 
-    
+@app.route('/eliminar_dato', methods=['POST'])
+def eliminar_dato():
+    if request.method == 'POST':
+        dato_id = request.form['dato_id']
+        dato = Dato.query.get(dato_id)
+        if dato:
+            db.session.delete(dato)
+            db.session.commit()
+            return redirect(url_for('index'))
+        else:
+            return jsonify({'mensaje': 'El dato no existe'}), 404  
 
 @app.route('/')
 def index():
