@@ -26,6 +26,26 @@ class dato(db.Model):
     id_cursos = db.Column(db.String(255),nullable=False)
     conocimientos = db.Column(db.String(255),nullable=False)
     
+@app.route('/agregar_dato', methods=['POST'])
+def agregar_dato():
+    if request.method == 'POST':
+        datos = request.json
+        name_user = datos.get('name_user')
+        password = datos.get('password')
+        genero = datos.get('genero')
+        direction = datos.get('direction')
+        pasatiempo = datos.get('pasatiempo')
+        id_cursos = datos.get('id_cursos')
+        conocimientos = datos.get('conocimientos')
+
+        nuevo_dato = Dato(name_user=name_user, password=password, genero=genero, direction=direction, pasatiempo=pasatiempo, id_cursos=id_cursos, conocimientos=conocimientos)
+
+        db.session.add(nuevo_dato)
+        db.session.commit()
+
+        return jsonify({'mensaje': 'Dato agregado correctamente'}), 201
+
+    
 
 # def __repr__(self):
 #     return '<dato %r>' % self.name_user
