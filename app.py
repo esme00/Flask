@@ -63,6 +63,7 @@ def editar_dato(id_dato):
         genero = request.form['genero']
         direction = request.form['direction']
         pasatiempo = request.form.getlist('pasatiempo')  # Lista de pasatiempos seleccionados
+        conocimientos = request.form['conocimientos']
         cursos = request.form['cursos']
 
         # Actualizar los datos en la base de datos
@@ -71,6 +72,7 @@ def editar_dato(id_dato):
         datos.genero = genero
         datos.direction = direction
         datos.pasatiempo = ', '.join(pasatiempo)  # Convertir la lista de pasatiempos en una cadena separada por comas
+        datos.conocimientos = conocimientos
         datos.cursos = cursos
 
         db.session.commit()
